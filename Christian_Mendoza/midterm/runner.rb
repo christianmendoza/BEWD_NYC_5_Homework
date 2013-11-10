@@ -2,25 +2,51 @@ require_relative 'YahooWeatherApi'
 require_relative 'forecast'
 
 # hello
-puts "\nWelcome to the Weather Center"
-puts "Enter a US zip code to get your 5 day forecast."
+puts "\n"
+puts "Welcome to the Weather Center."
+puts "\n"
+puts "Enter a location for a look at the 5 day forecast."
+puts "Example: [10014] or [new york, ny] or [honolulu] or [manila]"
+puts "\n"
 
-# keep prompting until 5-digit zip code is entered
-until (zip_code = gets.chomp) =~ /^\d{5}$/
-  puts "\nPlease enter a US zip code."
-end
+# get input location
+  location = gets.chomp
 
-yw = YahooWeatherApi.new (zip_code)
-results = yw.get_results
+# create new weather API object
+yw = YahooWeatherApi.new location
 
+# get back results from API call
+results = yw.results
+
+# do this if there are results (no empty array)
 if !results.empty?
-  forecast_hash = results.collect do |w|
-    w_params = { date: w['date'], high: w['high'], low: w['low'], description: w['text'] }
-    Forecast.new w_params
-  end
+  # set variables
+  forecast_results = results["item"]["forecast"]
+  city = results['location']['city']
+  state = results['location']['region']
+  country = results['location']['country']
 
   # here comes the forecast
-  puts "\nHere's your 5 day forecast for zip code #{zip_code}:\n\n"
+  puts "\n"
+  output = "Here's the 5 day forecast for #{city}, "
+
+  # output state if in U.S. or Canada, otherwise just country
+  if country.eql? 'United States'
+    output << state
+  elsif country.eql? 'Canada'
+    output << state + " " + country
+  else
+    output << country
+  end
+
+  puts output + ":"
+  puts "\n"
+
+  # create new Forecast objects
+  forecast_hash = forecast_results.collect do |w|
+    w_params = { date: w['date'], high: w['high'], low: w['low'], description: w['text'] }
+    Forecast.new w_params
+  end  
 
   # print out 5 day forecast
   forecast_hash.each do |forecast|
@@ -28,5 +54,6 @@ if !results.empty?
     puts "\n"
   end
 else
-  puts "\nThe zip code you provided is invalid."
+  puts "\n"
+  puts "The location provided is invalid."
 end
