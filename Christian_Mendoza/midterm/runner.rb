@@ -1,8 +1,5 @@
-# require files and modules
+require_relative 'YahooWeatherApi'
 require_relative 'forecast'
-require 'rest-client'
-#require 'json'
-#require 'uri'
 
 # hello
 puts "\nWelcome to the Weather Center"
@@ -13,23 +10,11 @@ until (zip_code = gets.chomp) =~ /^\d{5}$/
   puts "\nPlease enter a US zip code."
 end
 
-# constants
-YAHOO_QUERY_URL = 'http://query.yahooapis.com/v1/public/yql?q='
-QUERY = 'select item from weather.forecast where location='
-FORMAT = '&format=json'
-ENCODED_QUERY = URI.escape(QUERY + '"' + zip_code + '"')
-REST_URL = YAHOO_QUERY_URL + ENCODED_QUERY + FORMAT
+yw = YahooWeatherApi.new (zip_code)
+results = yw.get_results
 
-# string
-result = RestClient.get (REST_URL)
-
-# hash
-parsed = JSON.parse result
-
-# check if JSON returns empty forecast results, i.e. invalid zip code
-if !parsed['query']['results']['channel']['item']['description'].include? 'Invalid Input'
-  # create new Forecast objects
-  forecast_hash = parsed['query']['results']['channel']['item']['forecast'].collect do |w|
+if !results.empty?
+  forecast_hash = results.collect do |w|
     w_params = { date: w['date'], high: w['high'], low: w['low'], description: w['text'] }
     Forecast.new w_params
   end
@@ -40,6 +25,7 @@ if !parsed['query']['results']['channel']['item']['description'].include? 'Inval
   # print out 5 day forecast
   forecast_hash.each do |forecast|
     puts forecast
+    puts "\n"
   end
 else
   puts "\nThe zip code you provided is invalid."

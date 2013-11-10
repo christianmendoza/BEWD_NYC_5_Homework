@@ -10,6 +10,6 @@ class Forecast
   end
 
   def to_s
-    "#{date}\n#{description}, High: #{high}, Low: #{low}\n\n"
+    "#{date}\n#{description}, High: #{high}° F, Low: #{low}° F"
   end
 end
