@@ -1,0 +1,10 @@
+<h1>Welcome to RetFlex!</h1>
+
+<h2>Search results for: <%= params[:q] %> </h2>
+
+<% if !@movies.blank? %>
+  <%#= @movies.count %>
+  <%= render 'movies/allmovies' %>
+<% else %>
+  <p><%= "No results found." %></p>
+<% end %>
