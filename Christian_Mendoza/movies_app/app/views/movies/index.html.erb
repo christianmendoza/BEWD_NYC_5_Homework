@@ -1,13 +1,2 @@
-<h1>Welcome to RetFlex!</h1>
-
-<h2>Search for a movie</h2>
-<%= form_tag  '/search', method: :get do %>
-  <%= label_tag 'q', "Search" %>
-  <%= text_field_tag 'q' %>
-  <%= submit_tag %>
-<% end %>
-
-<%#= link_to "Create a shirt", new_shirt_path %>
-
-<h2>See our collection of movies below:</h2>
+<h3>See our collection of movies below</h3>
 <%= render 'allmovies' %>

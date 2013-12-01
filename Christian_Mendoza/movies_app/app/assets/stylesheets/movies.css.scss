@@ -38,6 +38,86 @@ table tr td:first-child, table tr th:first-child {
   border-left: 0;
   text-align: center;
 }
+
 table tr td:last-child, table tr th:last-child {
   border-right: 0;
+}
+
+tr.hovered {
+  background-color: #E5FFFF;
+}
+
+nav {
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #ccc;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline;
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 1px solid black;
+}
+
+nav ul li:last-child {
+  border: none;
+}
+
+nav ul li form {
+  display: inline;
+}
+
+.movie_form form input, .movie_form form textarea {
+  display: block;
+  margin-bottom: 1.5em;
+  width: 450px;
+}
+
+.movie_form form label {
+  font-weight: bold;
+}
+
+.movie_form form textarea {
+  height: 70px;
+}
+
+.movie_form form input#movie_year_released {
+  width: 40px;
+  /*display: inline;
+  margin-right: 40px;*/
+}
+
+.movie_form form select#rating {
+  display: block;
+}
+
+.movie_form form input[type=submit] {
+  width: inherit;
+  margin-top: 20px;
+}
+
+#error_explanation {
+  width: 415px;
+  background-color: #FFCCCC;
+  padding: 1px 20px;
+  margin-bottom: 2em;
+}
+
+.field_with_errors input, .field_with_errors textarea {
+  border: 1px solid #FF4D4D;
+}
+
+h3.alert {
+  color: #C73EB2;
+}
+
+h3.notice {
+  color: #9CB711;
 }

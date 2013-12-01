@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<%= render 'movies/header' %>
+<%= render 'movies/nav' %>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :h3, msg, class: name %>
+<% end -%> 
+
 <%= yield %>
 
 </body>

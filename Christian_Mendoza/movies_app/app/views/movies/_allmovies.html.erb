@@ -5,6 +5,8 @@
       <th>Rating</th>
       <th>Title</th>
       <th>Description</th>
+      <th></th>
+      <th></td>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +16,19 @@
       <td><%= movie.rating %></td>
       <td><%= movie.title %></td>
       <td><%= movie.description %></td>
+      <td><%= link_to "Edit", edit_movie_path(movie) %></td>
+      <td><%= link_to 'Delete', movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<script>
+$( document ).ready(function() {
+  $('table tr:gt(0)').mouseover(function() {
+      $(this).addClass('hovered');
+  }).mouseout(function() {
+      $(this).removeClass('hovered');
+  }); 
+});
+</script>

@@ -1,0 +1,32 @@
+<div class="movie_form">
+  <% if @movie.errors.any? %>
+  <div id="error_explanation">
+    <h4><%= pluralize(@movie.errors.count, "error") %> prohibited
+      this movie from being saved:</h4>
+    <ul>
+    <% @movie.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_for @movie do |m| %>
+    <% # set selected item in dropdown %>
+    <% @rating = params[:rating] %>
+    <% if (params[:commit].nil?) || (params[:commit].include? "Update") %>
+      <% @rating = @movie.rating %>
+    <% end %>
+
+    <%= m.label :title %>
+    <%= m.text_field :title %>
+    <%= m.label :description %>
+    <%= m.text_area :description %>
+    <%= m.label :year_released, "Year Released" %>
+    <%= m.text_field :year_released %>
+    <%= m.label :rating %>
+    <%= m.select :rating, options_for_select(["1", "2", "3", "4", "5"], @rating), include_blank: true %>
+    <%#= m.text_field :rating %>
+    <%= m.submit %>
+  <% end %>
+</div>

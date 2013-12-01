@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Add a new movie", new_movie_path %></li>
+    <li>
+      <%= form_tag  '/search', method: :get do %>
+        <%= text_field_tag 'q' %>
+        <%= submit_tag "Search" %>
+        <% end %>
+    </li>
+  </ul>
+</nav>
