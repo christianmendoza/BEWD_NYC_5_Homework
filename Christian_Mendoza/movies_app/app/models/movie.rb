@@ -3,7 +3,8 @@ class Movie < ActiveRecord::Base
   validates :description, length: { minimum: 10 }, presence: true
   validates :year_released, numericality: { greater_than: 0 }, allow_blank: true
   validates :rating, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_blank: true
-
+  # validates :year_released, inclusion: { in: 1..5 }
+  
   # All titles and descriptions must be present
   # Descriptions must be greater than 10 characters
   # Year released must be a number greater than 0
