@@ -1,6 +1,7 @@
 <nav>
   <ul>
     <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "All stories", stories_all_path %></li>
     <li><%= link_to "Add a new story", new_story_path %></li>
     <li>
       <%= form_tag  '/search', method: :get do %>
