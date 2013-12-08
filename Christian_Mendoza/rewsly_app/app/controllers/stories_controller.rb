@@ -5,6 +5,14 @@ class StoriesController < ApplicationController
     @stories = Story.all
   end
 
+  def create
+    fail
+  end
+
+  def new
+    fail
+  end
+
   def show
   end
 

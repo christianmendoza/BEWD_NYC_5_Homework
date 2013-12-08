@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%#= link_to "Add a new story", new_story_path %></li>
+    <li>
+      <%= form_tag  '/search', method: :get do %>
+        <%= text_field_tag 'q' %>
+        <%= submit_tag "Search" %>
+        <% end %>
+    </li>
+  </ul>
+</nav>

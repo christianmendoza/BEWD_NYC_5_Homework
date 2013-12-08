@@ -1,0 +1,7 @@
+<h3>Search results for: <%= params[:q] %> </h3>
+
+<% if !@stories.blank? %>
+  <%= render 'stories/allstories' %>
+<% else %>
+  <p><%= "No results found." %></p>
+<% end %>
