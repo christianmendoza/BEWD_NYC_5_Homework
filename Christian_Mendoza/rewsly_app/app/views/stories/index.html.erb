@@ -1,6 +1,4 @@
-<h1>Welcome to Rewsly</h1>
-
-<h2>Browse all stories:</h2>
+<h3>Browse all stories:</h3>
 <% @stories.each do |story| %>
-<p><%= story.title %></p>
+<p><%= link_to story.title, story %></p>
 <% end %>
