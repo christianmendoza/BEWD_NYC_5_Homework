@@ -1,4 +1,5 @@
 <h3><%= @story.title %></h3>
 <p><strong>Link:</strong> <%= link_to @story.link, @story.link, target: "_blank" %><br>
+<strong>Date:</strong> <%= @story.created_at.to_time.strftime('%m/%d/%y %H:%M %Z') %><br>
 <strong>Category:</strong> <%= @story.category %><br>
 <strong>Upvotes:</strong> <%= @story.upvotes %></p>

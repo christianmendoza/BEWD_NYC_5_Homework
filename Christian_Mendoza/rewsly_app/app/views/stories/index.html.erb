@@ -1,2 +1,7 @@
-<h3>All stories with at least 4 upvotes:</h3>
-<%= render 'allstories' %>
+<h3>All stories created today with at least 4 upvotes:</h3>
+
+<% if @stories.any? %>
+  <%= render 'allstories' %>
+<% else %>
+  <p><%= "No stories found." %></p>
+<% end %>

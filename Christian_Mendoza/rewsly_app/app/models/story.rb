@@ -9,7 +9,8 @@ class Story < ActiveRecord::Base
   end
 
   def self.get_stories
-    where("upvotes >= 4")
+    # database 'created_at' column is UTC. Subtract 5 hours to get local date/time
+    where("upvotes >= :minimum AND DATE(created_at, '-5 hour') = DATE(:current)", minimum: 4, current: Date.current)
   end
 
   def valid_link
