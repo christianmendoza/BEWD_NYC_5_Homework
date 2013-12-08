@@ -2,9 +2,10 @@ class StoriesController < ApplicationController
   before_action :find_story, only: [:show]
 
   def index
-    @stories = Story.all
+    #@stories = Story.all
+    @stories = Story.get_stories
   end
-  
+
   def create
     @story = Story.create safe_story
 

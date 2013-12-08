@@ -8,6 +8,10 @@ class Story < ActiveRecord::Base
     where('title LIKE :query OR category LIKE :query', query: "%#{query}%")
   end
 
+  def self.get_stories
+    where("upvotes >= 4")
+  end
+
   def valid_link
     unless self.link.downcase.start_with?('http://')
       errors.add(:link, "must start with 'http://'")
