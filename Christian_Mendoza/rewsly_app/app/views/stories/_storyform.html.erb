@@ -1,5 +1,15 @@
 <div class="story_form">
-
+  <% if @story.errors.any? %>
+  <div id="error_explanation">
+    <h4><%= pluralize(@story.errors.count, "error") %> prohibited
+      this story from being saved:</h4>
+    <ul>
+    <% @story.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
 
   <%= form_for @story do |s| %>
     <%= s.label :title %>

@@ -11,6 +11,10 @@
 <h1>Welcome to Rewsly</h1>
 <%= render 'stories/nav' %>
 
+<% flash.each do |name, msg| -%>
+  <%= content_tag :h3, msg, class: name %>
+<% end -%> 
+
 <%= yield %>
 
 </body>

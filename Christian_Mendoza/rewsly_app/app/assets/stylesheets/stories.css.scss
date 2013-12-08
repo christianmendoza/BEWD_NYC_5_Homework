@@ -29,7 +29,7 @@ nav ul li form {
   display: inline;
 }
 
-.story_form form input, .story_form form textarea {
+.story_form form input {
   display: block;
   margin-bottom: 1.5em;
   width: 450px;
@@ -37,20 +37,6 @@ nav ul li form {
 
 .story_form form label {
   font-weight: bold;
-}
-
-.story_form form textarea {
-  height: 70px;
-}
-
-.story_form form input#story_year_released {
-  width: 40px;
-  /*display: inline;
-  margin-right: 40px;*/
-}
-
-.story_form form select#rating {
-  display: block;
 }
 
 .story_form form input[type=submit] {
@@ -65,7 +51,7 @@ nav ul li form {
   margin-bottom: 2em;
 }
 
-.field_with_errors input, .field_with_errors textarea {
+.field_with_errors input {
   border: 1px solid #FF4D4D;
 }
 

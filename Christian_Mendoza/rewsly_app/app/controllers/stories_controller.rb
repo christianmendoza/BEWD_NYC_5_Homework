@@ -4,9 +4,15 @@ class StoriesController < ApplicationController
   def index
     @stories = Story.all
   end
-
+  
   def create
-    fail
+    @story = Story.create safe_story
+
+    if @story.save
+      redirect_to @story, notice: "The story '#{@story.title}' was added."
+    else
+      render 'new'
+    end
   end
 
   def new
@@ -20,5 +26,9 @@ class StoriesController < ApplicationController
 
   def find_story
     @story = Story.find params[:id]
+  end
+
+  def safe_story
+    params.require(:story).permit(:title, :link, :category, :upvotes)
   end
 end
