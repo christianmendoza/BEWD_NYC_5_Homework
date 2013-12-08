@@ -1,0 +1,15 @@
+<div class="story_form">
+
+
+  <%= form_for @story do |s| %>
+    <%= s.label :title %>
+    <%= s.text_field :title %>
+    <%= s.label :link %>
+    <%= s.text_field :link, placeholder: "http://" %>
+    <%= s.label :category %>
+    <%= s.text_field :category %>
+    <%= s.label :upvotes %>
+    <%= s.text_field :upvotes %>
+    <%= s.submit %>
+  <% end %>
+</div>

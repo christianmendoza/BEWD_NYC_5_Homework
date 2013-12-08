@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
   end
 
   def new
-    fail
+    @story = Story.new
   end
 
   def show
